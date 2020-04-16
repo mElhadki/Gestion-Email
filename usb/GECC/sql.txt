@@ -1,0 +1,44 @@
+CREATE TABLE Admin( 
+    A_ID Int AUTO_INCREMENT,
+    A_Login Varchar (50) NOT NULL ,  
+    A_Passw Varchar (50) NOT NULL,  
+    CONSTRAINT Admin_PK PRIMARY KEY (A_ID)  
+    );
+    
+CREATE TABLE Commercial( 
+    CR_ID Int AUTO_INCREMENT,
+    CName Varchar (50) NOT NULL ,  
+    CPass Varchar (50) NOT NULL,  
+    A_ID Int,
+    CONSTRAINT Commercial_PK PRIMARY KEY (CR_ID) ,
+    CONSTRAINT Admin_dept_fk FOREIGN KEY (A_ID) REFERENCES Admin(A_ID)
+
+    );
+    
+ CREATE TABLE Client(  
+   CL_ID  Int AUTO_INCREMENT , 
+     Email varchar(50) NOT NULL, 
+   First_name    Varchar (255) NOT NULL ,  
+   Last_name Varchar (255) NOT NULL ,  
+   Middle_Name    Varchar (255) NOT NULL ,  
+   Fonction Varchar (255) NOT NULL ,  
+   Company varchar(50) NOT NULL, 
+   Country varchar(50) NOT NULL, 
+   Linkden varchar(50) Not NULL , 
+   Phone_Number int NOT NULL,
+   DateInsc DATE, 
+   Non varchar(20) Not NULL ,
+   CR_ID Int ,
+   CONSTRAINT Clients_PK PRIMARY KEY (CL_ID) ,
+   CONSTRAINT Commercial_dept_fk FOREIGN KEY (CR_ID) REFERENCES Commercial(CR_ID)
+                  );
+
+INSERT INTO `admin`(`A_ID`, `A_Login`, `A_Passw`) 
+VALUES (1,'SAMIRA',123456789)
+
+
+
+SELECT * FROM `client` WHERE C_origine = 'LinkedIn'
+
+
+
